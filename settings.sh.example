@@ -1,0 +1,10 @@
+###SETTINGS###
+XBIAN_PASS="MyPass"
+ROOT_PASS="MoreSecurePass"
+SAMBA_USER="samba"
+SAMBA_PASS="SambaPass"
+HOSTNAME="xbian"
+TIMEZONE="europe amsterdam"
+EXTERNAL_HDD_SYM_NAME="/external-hdd"
+
+PWD=`pwd`
