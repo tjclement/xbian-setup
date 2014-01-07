@@ -1,0 +1,16 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fnil\fcharset0 Tahoma;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf0 auto lo\
+\
+iface lo inet loopback\
+iface eth0 inet dhcp\
+\
+allow-hotplug wlan0\
+iface wlan0 inet dhcp\
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf\
+iface default inet dhcp}

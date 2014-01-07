@@ -7,4 +7,5 @@ HOSTNAME="xbian"
 TIMEZONE="europe amsterdam"
 EXTERNAL_HDD_SYM_NAME="/external-hdd"
 
-PWD=`pwd`
+INSTALL_UPC_REMOTE=0
+INSTALL_SOURCES_LIST=1

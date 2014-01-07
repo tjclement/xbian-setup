@@ -11,6 +11,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 ###FUNCTIONS###
+
 function message()
 {
   echo -e "\e[1;32m"
@@ -34,10 +35,16 @@ xbian-config timezone update europe amsterdam
 message "Configuring video settings"
 xbian-config videoflags update hdmi_force_hotplug disable_overscan disable_splash
 
-message "Creating external HDD symlink folder"
+message “Configuring wifi connectivity”
+cp $PWD/etc/network/interfaces /etc/network/interfaces
+cp $PWD/etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+
 if [ -n "$EXTERNAL_HDD_SYM_NAME" ]
 then
+	message "Creating external HDD symlink folder"
 	ln -s /media/usb0/ /$EXTERNAL_HDD_SYM_NAME
+else
+	message "Skipping external HDD symlink creation"
 fi
 
 message "Copying over usbmount configuration file"
@@ -66,8 +73,22 @@ service samba restart
 message "Copying over XBMC configuration file"
 cp $PWD/home/xbian/.xbmc/userdata/advancedsettings.xml /home/xbian/.xbmc/userdata/advancedsettings.xml
 
-message "Copying over XBMC sources file"
-cp $PWD/home/xbian/.xbmc/userdata/sources.xml /home/xbian/.xbmc/userdata/sources.xml
+if [ "$INSTALL_SOURCES_LIST" -eq 1 ]
+then
+	message "Copying over XBMC sources file"
+	cp $PWD/home/xbian/.xbmc/userdata/sources.xml /home/xbian/.xbmc/userdata/sources.xml
+else
+	message "Skipping XBMC sources list""
+fi
+
+if [ "$INSTALL_UPC_REMOTE" -eq 1 ]
+then
+	message "Installing UPC Remote keymap"
+	cp $PWD/etc/lirc/remotes/upc_remote.conf /etc/lirc/remotes/upc_remote.conf
+	echo "include "/etc/lirc/remotes/upc_remote.conf" >> /etc/lirc/lircd.conf"
+	cp $PWD/home/xbian/.xbmc/userdata/Lircmap.xml /home/xbian/.xbmc/userdata/Lircmap.xml
+else
+	message "Skipping UPC Remote installation"
 
 ##AirPlay##
 message "Hotfixing AirPlay functionality"

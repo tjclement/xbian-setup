@@ -1,0 +1,34 @@
+<lircmap>
+  <remote device="UPCRemote">
+    <up>KEY_UP</up>
+    <down>KEY_DOWN</down>
+    <left>KEY_LEFT</left>
+    <right>KEY_RIGHT</right>
+    <play>KEY_PLAYPAUSE</play>
+    <select>KEY_ENTER</select>
+    <back>KEY_BACK</back>
+    <title>KEY_PAGEDOWN</title>
+    <info>KEY_INFO</info>
+    <subtitle>KEY_TEXT</subtitle>
+    <pageplus>KEY_CHANNELUP</pageplus>
+    <pageminus>KEY_CHANNELDOWN</pageminus>
+    <volumeplus>KEY_VOLUMEUP</volumeplus>
+    <volumeminus>KEY_VOLUMEDOWN</volumeminus>
+    <mute>KEY_MUTE</mute>
+    <power>KEY_POWER</power>
+    <red>KEY_RED</red>
+    <green>KEY_GREEN</green>
+    <yellow>KEY_YELLOW</yellow>
+    <blue>KEY_BLUE</blue>
+    <zero>KEY_0</zero>
+    <one>KEY_1</one>
+    <two>KEY_2</two>
+    <three>KEY_3</three>
+    <four>KEY_4</four>
+    <five>KEY_5</five>
+    <six>KEY_6</six>
+    <seven>KEY_7</seven>
+    <eight>KEY_8</eight>
+    <nine>KEY_9</nine>
+  </remote>
+</lircmap>

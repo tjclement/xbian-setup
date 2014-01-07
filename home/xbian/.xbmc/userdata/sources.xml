@@ -12,9 +12,13 @@
             <name>Movies</name>
             <path pathversion="1">/external-hdd/Downloads/Movies/</path>
         </source>
+        <source>
+            <name>Comedy</name>
+            <path pathversion="1">/external-hdd/Downloads/Comedy/</path>
+        </source>
     </video>
     <music>
-        <default pathversion="1"></default>
+        <default pathversion="1">Music</default>
         <source>
             <name>Music</name>
             <path pathversion="1">/external-hdd/Downloads/Music/</path>

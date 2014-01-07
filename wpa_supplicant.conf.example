@@ -1,0 +1,8 @@
+network={
+ssid="Your WLAN SSID"
+proto=RSN
+key_mgmt=WPA-PSK
+pairwise=CCMP TKIP
+group=CCMP TKIP
+psk="YOUR WLAN PASSWORD IN CLEAR TEXT OR ENCRYPTED"
+}
