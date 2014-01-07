@@ -22,9 +22,9 @@ function message()
 
 ##SYSTEM##
 
-message "Changing login credentials for xbian and root"
-echo -e "$XBIAN_PASS\n$XBIAN_PASS" > passwd xbian
-echo -e "$ROOT_PASS\n$ROOT_PASS" > passwd root
+message "Changing login credentials for root and xbian"
+xbian-config rootpass update $ROOT_PASS
+xbian-config xbianpass update $XBIAN_PASS
 
 message "Changing hostname to '$HOSTNAME'"
 xbian-config hostname update $HOSTNAME
@@ -37,7 +37,7 @@ xbian-config videoflags update hdmi_force_hotplug disable_overscan disable_splas
 
 message “Configuring wifi connectivity”
 cp $PWD/etc/network/interfaces /etc/network/interfaces
-cp $PWD/etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+cp $PWD/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 if [ -n "$EXTERNAL_HDD_SYM_NAME" ]
 then
@@ -64,7 +64,7 @@ echo -e "$SAMBA_PASS\n$SAMBA_PASS" | (passwd $SAMBA_USER)
 echo -e "$SAMBA_PASS\n$SAMBA_PASS" | (smbpasswd -a -s $SAMBA_USER)
 
 message "Copying over samba configuration file"
-cp $PWD/etc/samba/smb.conf /etc/samba/smb.conf
+cp $PWD/smb.conf /etc/samba/smb.conf
 
 message "Restarting samba"
 service samba restart
@@ -78,17 +78,18 @@ then
 	message "Copying over XBMC sources file"
 	cp $PWD/home/xbian/.xbmc/userdata/sources.xml /home/xbian/.xbmc/userdata/sources.xml
 else
-	message "Skipping XBMC sources list""
+	message "Skipping XBMC sources list"
 fi
 
 if [ "$INSTALL_UPC_REMOTE" -eq 1 ]
 then
 	message "Installing UPC Remote keymap"
 	cp $PWD/etc/lirc/remotes/upc_remote.conf /etc/lirc/remotes/upc_remote.conf
-	echo "include "/etc/lirc/remotes/upc_remote.conf" >> /etc/lirc/lircd.conf"
+	echo "include \"/etc/lirc/remotes/upc_remote.conf\"" >> /etc/lirc/lircd.conf
 	cp $PWD/home/xbian/.xbmc/userdata/Lircmap.xml /home/xbian/.xbmc/userdata/Lircmap.xml
 else
 	message "Skipping UPC Remote installation"
+fi
 
 ##AirPlay##
 message "Hotfixing AirPlay functionality"
