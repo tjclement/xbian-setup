@@ -35,9 +35,14 @@ xbian-config timezone update europe amsterdam
 message "Configuring video settings"
 xbian-config videoflags update hdmi_force_hotplug disable_overscan disable_splash
 
-message “Configuring wifi connectivity”
-cp $PWD/etc/network/interfaces /etc/network/interfaces
-cp $PWD/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+if [ "$CONFIGURE_WIFI" -eq 1 ]
+then
+        message “Configuring wifi connectivity”
+        cp $PWD/etc/network/interfaces /etc/network/interfaces
+        cp $PWD/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+else
+        message "Skipping wifi configuration"
+fi
 
 if [ -n "$EXTERNAL_HDD_SYM_NAME" ]
 then
